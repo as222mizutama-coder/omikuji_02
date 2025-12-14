@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>棒おみくじ</title>
+<style>
+body{margin:0;font-family:system-ui;background:linear-gradient(135deg,#fff7f2,#f3f0ff)}
+.app{max-width:900px;margin:auto;padding:20px}
+h1{text-align:center}
+button{padding:12px 18px;border-radius:999px;border:none;font-weight:bold;cursor:pointer}
+.drawBtn{background:linear-gradient(135deg,#ff7aa8,#ffbe55)}
+.result{font-size:48px;font-weight:900;letter-spacing:.2em}
+</style>
+</head>
+<body>
+<div class="app">
+<h1>棒おみくじ</h1>
+<div class="result" id="result">？</div>
+<p id="msg">ボタンを押して引いてね</p>
+<button class="drawBtn" onclick="draw()">引く</button>
+<button onclick="resetOmikuji()">戻す</button>
+</div>
+
+<script>
+const list=['大吉','中吉','小吉','末吉','凶'];
+function draw(){
+ const r=list[Math.floor(Math.random()*list.length)];
+ document.getElementById('result').textContent=r;
+ document.getElementById('msg').textContent={
+  '大吉':'最高の一日！',
+  '中吉':'良い流れです',
+  '小吉':'コツコツ吉',
+  '末吉':'焦らず行こう',
+  '凶':'今日は休憩日'
+ }[r];
+}
+function resetOmikuji(){
+ document.getElementById('result').textContent='？';
+ document.getElementById('msg').textContent='ボタンを押して引いてね';
+}
+</script>
+</body>
+</html>
